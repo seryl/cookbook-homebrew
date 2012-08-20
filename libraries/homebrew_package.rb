@@ -45,7 +45,7 @@ class Chef
         end
 
         def current_installed_version
-          version = get_response_from_command("brew list --versions | awk '/^#{@new_resource.package_name} / { print $2 }'")
+          version = get_response_from_command("brew list --versions | awk '/^#{@new_resource.package_name} / { print $3 }'").chomp(',')
           version.empty? ? nil : version
         end
 
